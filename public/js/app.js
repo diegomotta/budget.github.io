@@ -52087,12 +52087,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -52386,72 +52380,102 @@ var render = function() {
             [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-md-4" }, [
-                  _c("div", { staticClass: "ibox " }, [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ibox-content" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-md-12",
-                            staticStyle: { "text-align": "center" }
-                          },
-                          [
-                            _c("h1", { staticClass: "no-margins" }, [
-                              _vm._v("+ " + _vm._s(_vm.into))
-                            ])
-                          ]
-                        )
+                  _c(
+                    "div",
+                    {
+                      staticClass: "ibox ",
+                      staticStyle: {
+                        "border-style": "solid",
+                        "border-color": "#1ab394"
+                      }
+                    },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ibox-content" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "col-md-12",
+                              staticStyle: { "text-align": "center" }
+                            },
+                            [
+                              _c("h1", { staticClass: "no-margins" }, [
+                                _vm._v("+ " + _vm._s(_vm.into))
+                              ])
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
-                  _c("div", { staticClass: "ibox " }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ibox-content" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-md-12",
-                            staticStyle: { "text-align": "center" }
-                          },
-                          [
-                            _c("h1", { staticClass: "no-margins" }, [
-                              _vm._v("- " + _vm._s(_vm.out))
-                            ])
-                          ]
-                        )
+                  _c(
+                    "div",
+                    {
+                      staticClass: "ibox ",
+                      staticStyle: {
+                        "border-style": "solid",
+                        "border-color": "#ed5565"
+                      }
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ibox-content" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "col-md-12",
+                              staticStyle: { "text-align": "center" }
+                            },
+                            [
+                              _c("h1", { staticClass: "no-margins" }, [
+                                _vm._v("- " + _vm._s(_vm.out))
+                              ])
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-4" }, [
-                  _c("div", { staticClass: "ibox " }, [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ibox-content" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-md-12",
-                            staticStyle: { "text-align": "center" }
-                          },
-                          [
-                            _c("h1", { staticClass: "no-margins" }, [
-                              _vm._v(_vm._s(_vm.into - _vm.out))
-                            ])
-                          ]
-                        )
+                  _c(
+                    "div",
+                    {
+                      staticClass: "ibox ",
+                      staticStyle: {
+                        "border-style": "solid",
+                        "border-color": "#1c84c6"
+                      }
+                    },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ibox-content" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "col-md-12",
+                              staticStyle: { "text-align": "center" }
+                            },
+                            [
+                              _c("h1", { staticClass: "no-margins" }, [
+                                _vm._v(_vm._s(_vm.into - _vm.out))
+                              ])
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -52495,7 +52519,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ibox-title" }, [
-      _c("h5", [_vm._v("Ingresos")])
+      _c("h5", { staticStyle: { "text-align": "center" } }, [
+        _vm._v("Ingresos")
+      ])
     ])
   },
   function() {
@@ -52503,7 +52529,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ibox-title" }, [
-      _c("h5", [_vm._v("Gastos")])
+      _c("h5", { staticStyle: { "text-align": "center" } }, [_vm._v("Gastos")])
     ])
   },
   function() {
@@ -52511,7 +52537,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ibox-title" }, [
-      _c("h5", [_vm._v("Balance")])
+      _c("h5", { staticStyle: { "text-align": "center" } }, [_vm._v("Balance")])
     ])
   }
 ]
@@ -55231,22 +55257,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -55351,40 +55361,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ibox-title" }, [
-      _c("h5", [_vm._v("Gastos ")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ibox-tools" }, [
-        _c("a", { staticClass: "collapse-link" }, [
-          _c("i", { staticClass: "fa fa-chevron-up" })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "dropdown-toggle",
-            attrs: { "data-toggle": "dropdown", href: "#" }
-          },
-          [_c("i", { staticClass: "fa fa-wrench" })]
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
-          _c("li", [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Config option 1")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Config option 2")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "close-link" }, [
-          _c("i", { staticClass: "fa fa-times" })
-        ])
-      ])
+      _c("h5", [_vm._v("Ingresos y Gastos ")])
     ])
   },
   function() {

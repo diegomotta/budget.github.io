@@ -6,9 +6,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="ibox ">
+                                <div class="ibox " style=" border-style: solid;border-color: #1ab394;">
                                     <div class="ibox-title">
-                                        <h5>Ingresos</h5>
+                                        <h5 style="text-align: center;">Ingresos</h5>
                                     </div>
                                     <div class="ibox-content">
 
@@ -27,9 +27,9 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="ibox ">
+                                <div class="ibox " style=" border-style: solid;border-color: #ed5565;">
                                     <div class="ibox-title">
-                                        <h5>Gastos</h5>
+                                        <h5 style="text-align: center;">Gastos</h5>
                                     </div>
                                     <div class="ibox-content">
 
@@ -48,23 +48,17 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="ibox ">
+                                <div class="ibox "style=" border-style: solid;border-color: #1c84c6;">
                                     <div class="ibox-title">
-                                        <h5>Balance</h5>
+                                        <h5 style="text-align: center;">Balance</h5>
                                     </div>
                                     <div class="ibox-content">
 
                                         <div class="row">
                                             <div class="col-md-12" style="text-align: center;">
                                                 <h1 class="no-margins">{{into - out}}</h1>
-                                                <!--<div class="font-bold text-navy">44% <i class="fa fa-level-up"></i>-->
-                                                <!--<small>Rapid pace</small>-->
-                                                <!--</div>-->
                                             </div>
-
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
