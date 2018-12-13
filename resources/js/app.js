@@ -17,7 +17,8 @@ Vue.component('type-expense', require('./components/Parameters/TypeExpense.vue')
 Vue.component('list-expense', require('./components/Expense/List.vue'));
 
 Vue.use(VueRouter);
-
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 import App from './components/App.vue'
 

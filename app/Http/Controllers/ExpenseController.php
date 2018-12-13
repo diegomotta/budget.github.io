@@ -17,6 +17,8 @@ class ExpenseController extends Controller
         return 'ok';
     }
 
+
+
     public function index(){
         $expenses = Expense::with('typeExpense')->get();
         return $expenses->toJson();

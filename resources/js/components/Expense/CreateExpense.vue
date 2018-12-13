@@ -70,7 +70,7 @@
 
                 } ;
                 this.$store.dispatch('createExpense', expense);
-                this.$router.push({name:"principal"});
+                this.$router.push({name:"main"});
 
             }
         },
