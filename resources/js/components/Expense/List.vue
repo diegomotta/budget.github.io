@@ -24,30 +24,14 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-9 m-b-xs">
-                        <div data-toggle="buttons" class="btn-group btn-group-toggle">
-                            <label class="btn btn-sm btn-white"> <input type="radio"
-                                                                        id="option1"
-                                                                        name="options"> Day
-                            </label>
-                            <label class="btn btn-sm btn-white active"> <input type="radio"
-                                                                               id="option2"
-                                                                               name="options">
-                                Week
-                            </label>
-                            <label class="btn btn-sm btn-white"> <input type="radio"
-                                                                        id="option3"
-                                                                        name="options"> Month
-                            </label>
-                        </div>
+
                     </div>
                     <div class="col-sm-3">
                         <div class="input-group mb-3">
+                            <span class="input-group-addon"><i class="fas fa-search"></i></span>
                             <input type="text" class="form-control form-control-sm"
-                                   placeholder="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-sm btn-primary" type="button">Go!
-                                </button>
-                            </div>
+                                   placeholder="Buscar ingreso/gasto " v-model="search">
+
                         </div>
                     </div>
                 </div>
@@ -58,13 +42,13 @@
 
                             <th>#</th>
                             <th>Fecha</th>
-                            <th>Tipo de gasto</th>
+                            <th>Tipo de ingreso/gasto</th>
                             <th>Monto</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(expense, index) in expenses">
+                        <tr v-for="(expense, index) in expensesfilter">
                             <td>{{expense.id}}</td>
                             <td>{{expense.created_at}}</td>
                             <td>{{expense.type_expense.type}}</td>
@@ -86,6 +70,11 @@
 
     export default{
 
+        data(){
+            return{
+                search:""
+            }
+        },
         mounted() {
             this.$store.dispatch('fetch');
             this.$store.dispatch('getTotalEntry');
@@ -94,6 +83,11 @@
         },
         computed: {
             ...mapState(['expenses']),
+            expensesfilter: function () {
+                return this.expenses.filter(value => {
+                    return value.type_expense.type.toUpperCase().match(this.search.toUpperCase());
+                })
+            },
             expensesLength() {
                 return this.expenses.length;
             }
