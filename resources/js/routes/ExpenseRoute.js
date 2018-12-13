@@ -5,6 +5,8 @@ import Main from '../components/Main.vue'
 import CreateEntry from '../components/Expense/CreateEntry.vue'
 import CreateExpense from '../components/Expense/CreateExpense.vue'
 import TypeExpense from '../components/TypeExpense/TypeExpense.vue'
+import TypeEntry from '../components/TypeEntry/TypeEntry.vue'
+
 Vue.use(Router)
 
 var router = new Router({
@@ -20,6 +22,9 @@ var router = new Router({
         },
         {
             path: '/tipo-de-gastos', component: TypeExpense, name:"typeExpenses",
+        },
+        {
+            path: '/tipo-de-ingresos', component: TypeEntry, name:"typeEntries",
         }
     ]
 });

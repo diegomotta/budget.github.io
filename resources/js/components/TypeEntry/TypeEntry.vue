@@ -5,7 +5,7 @@
             <div class="ibox float-e-margins ">
                 <div class="ibox-title">
                     <h5>
-                        Tipo de gastos
+                        Tipo de ingresos
                     </h5>
                     <div class="ibox-tools">
                         <div class="btn-group">
@@ -16,20 +16,20 @@
                     </div>
                 </div>
             </div>
-            <type-expense-list></type-expense-list>
+            <type-entry-list></type-entry-list>
         </div>
     </div>
 </template>
 <script>
-    import ExpenseList from '../../components/TypeExpense/List';
+    import EntriesList from '../../components/TypeEntry/List';
 
     export default{
         components: {
-            'type-expense-list': ExpenseList,
+            'type-entry-list': EntriesList,
         },
         data(){
             return{
-                typeExpense:""
+                typeEntry:""
             }
         }
     }

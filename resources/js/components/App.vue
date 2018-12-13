@@ -18,8 +18,12 @@
                                     <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
                                        data-toggle="dropdown">Parámetros</a>
                                     <ul role="menu" class="dropdown-menu">
-                                        <router-link tag="li" :to="{name:'typeExpenses'}" ><a>Tipo de gastos</a></router-link>
+                                        <router-link tag="li" :to="{name:'typeEntries'}" ><a><i class="fas fa-arrow-circle-up"></i> Tipo de ingresos</a></router-link>
+
+                                        <router-link tag="li" :to="{name:'typeExpenses'}" ><a><i class="fas fa-arrow-circle-down"></i> Tipo de gastos</a></router-link>
+
                                     </ul>
+
                                 </li>
                             </ul>
                             <ul class="nav navbar-top-links navbar-right">

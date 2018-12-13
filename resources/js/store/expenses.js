@@ -26,6 +26,11 @@ let expensesStore = new Vuex.Store({
                 return function () {
                     return state.typeexpenses;
                 }
+            },
+            getTypeEntries(state){
+                return function () {
+                    return state.typeentries;
+                }
             }
         },
         mutations: {
@@ -47,24 +52,13 @@ let expensesStore = new Vuex.Store({
             },
         },
         actions: {
-            fetch({commit}) {
 
+            //Methods to manager entries and expenses
+
+            fetch({commit}) {
                 const expenses = '/expenses';
                 return axios.get(expenses)
                     .then(response => commit('FETCH', response.data))
-                    .catch();
-            },
-            fetchTypeExpense({commit}) {
-                const typeexpenses = '/typeExpenses';
-                return axios.get(typeexpenses)
-
-                    .then(response => commit('FETCHTYPEEXPENSE', response.data))
-                    .catch();
-            },
-            fetchTypeEntries({commit}) {
-                let url = '/typeEntries'
-                return axios.get(url)
-                    .then(response => commit('FETCHTYPENTRIES', response.data))
                     .catch();
             },
 
@@ -81,7 +75,7 @@ let expensesStore = new Vuex.Store({
             },
             createExpense({}, expense) {
 
-                let url = '/expenses/store'
+                let url = '/expenses/store';
                 axios.post(url, expense)
                     .then(() => {
                         this.dispatch('fetch');
@@ -91,8 +85,19 @@ let expensesStore = new Vuex.Store({
                     });
 
             },
+
+            //Methods to manager type of expenses
+
+            fetchTypeExpense({commit}) {
+                const typeexpenses = '/typeExpenses';
+                return axios.get(typeexpenses)
+
+                    .then(response => commit('FETCHTYPEEXPENSE', response.data))
+                    .catch();
+            },
+
             createTypeExpense({}, typeexpense) {
-                let url = '/typeExpense/store'
+                let url = '/typeExpensez/store';
                 axios.post(url, typeexpense)
                     .then(() => {
                         this.dispatch('fetchTypeExpense');
@@ -103,19 +108,48 @@ let expensesStore = new Vuex.Store({
             },
             updateTypeExpense({}, typexpense) {
 
-                let url = '/typeExpense/'+ typexpense.id+'/update';
+                let url = '/typeExpenses/'+ typexpense.id+'/update';
                 axios.put(url, typexpense)
                     .then(() => {
                         this.dispatch('fetchTypeExpense');
                     });
 
             },
+
+            getTotalExpense({commit})
+            {
+                let url = '/expenses/totalexpense';
+                return axios.get(url)
+                    .then(response => commit('TOTALEXPENSE', response.data))
+                    .catch();
+            },
+
+            //Methods to manager type of entries
+
+
+            fetchTypeEntries({commit}) {
+                let url = '/typeEntries';
+                return axios.get(url)
+                    .then(response => commit('FETCHTYPENTRIES', response.data))
+                    .catch();
+            },
+
             createTypeEntry({}, typeentry) {
-                let url = '/typeEntry/store'
+                let url = '/typeEntries/store';
                 axios.post(url, typeentry)
                     .then(() => {
                         this.dispatch('fetchTypeEntries');
 
+                    });
+
+            },
+
+            updateTypeEntry({}, typeentry) {
+
+                let url = '/typeEntries/'+ typeentry.id+'/update';
+                axios.put(url, typeentry)
+                    .then(() => {
+                        this.dispatch('fetchTypeEntries');
                     });
 
             },
@@ -128,15 +162,7 @@ let expensesStore = new Vuex.Store({
                     .then(response => commit('TOTALENTRY', response.data))
                     .catch();
             }
-            ,
-            getTotalExpense({commit})
-            {
-                let url = '/expenses/totalexpense';
 
-                return axios.get(url)
-                    .then(response => commit('TOTALEXPENSE', response.data))
-                    .catch();
-            }
         }
 
     })

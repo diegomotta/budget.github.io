@@ -25,7 +25,7 @@ class TypeExpenseController extends Controller
     }
 
 
-    public function updateTypeExpense(Request $request, $id){
+    public function updateType(Request $request, $id){
         $typeExpense = TypeExpense::where('id',$id)->first();
         $typeExpense->type = $request->get('type');
         $typeExpense->save();
