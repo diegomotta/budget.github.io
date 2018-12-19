@@ -10,7 +10,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Cantidad gastada</label>
-                                <input type="number" placeholder="" class="form-control" v-model="expense">
+                                <input type="number" placeholder="" :maxlength="10" class="form-control" v-model="expense">
 
                             </div>
                         </div>
@@ -18,6 +18,7 @@
                             <div class="form-group">
                                 <label>Cantidad gastada</label>
                                 <select class="form-control m-b" v-model="typeExpense">
+                                    <option value="" >-- Seleccione la categoria --</option>
                                     <option v-for="option in typeExpenses" v-bind:value="option.id">{{option.type}}
                                     </option>
                                 </select>

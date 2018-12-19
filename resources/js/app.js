@@ -33,11 +33,13 @@ import App from './components/App.vue'
 
 // const router = new VueRouter({mode: "history", routes});
 
+
 const app = new Vue({
     el: '#app',
     components: {App},
     router,
     store: expenses
+
 });
 
 

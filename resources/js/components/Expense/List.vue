@@ -32,17 +32,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(expense, index) in expensesfilter">
+                        <tr @click="toggleModal(expense)" v-for="(expense, index) in expensesfilter">
                             <td>{{expense.id}}</td>
                             <td>{{expense.created_at}}</td>
                             <td>{{expense.type_expense.type}}</td>
                             <td>{{expense.value}}</td>
-                            <td></td>
+                            <td><button class="btn btn-xs btn-danger" @click.stop="deleteExpense(expense)"><i class="fas fa-trash"></i></button></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-
+                <modalEdit v-show="isModalVisible" @close="closeModalEdit"></modalEdit>
             </div>
         </div>
     </div>
@@ -50,30 +50,48 @@
 </template>
 <script>
     import store from '../../store/expenses'
-    import { mapState } from 'vuex';
+    import {mapState} from 'vuex';
+    import modalEdit from '../../components/Expense/ModalEdit.vue';
+    import EventBus from '../../EventBus/eventbus';
 
     export default{
 
         data(){
-            return{
-                search:""
+            return {
+                search: "",
+                isModalVisible: false,
+
             }
+        },
+        components: {
+            modalEdit,
         },
         mounted() {
             this.$store.dispatch('fetch');
             this.$store.dispatch('getTotalEntry');
             this.$store.dispatch('getTotalExpense');
-
         },
         computed: {
             ...mapState(['expenses']),
-            expensesfilter: function () {
-                return this.expenses.filter(value => {
-                    return value.type_expense.type.toUpperCase().match(this.search.toUpperCase());
-                })
+            expensesfilter(){
+                return this.$store.getters.getExpenseFilter(this.search);
             },
             expensesLength() {
                 return this.expenses.length;
+            }
+        },
+        methods: {
+            toggleModal(expense) {
+                this.isModalVisible = true;
+                EventBus.$emit('toggleModal', expense);
+            },
+            closeModalEdit() {
+                this.isModalVisible = false;
+                this.$router.push({name: "main"});
+            }
+            ,
+            deleteExpense(expense){
+                this.$store.dispatch('deleteExpense', expense);
             }
         }
 

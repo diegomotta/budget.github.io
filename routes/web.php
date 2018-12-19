@@ -31,8 +31,8 @@ Route::get('/expenses','ExpenseController@index')->name('expenses.index');
 Route::get('/expenses/totalentry','ExpenseController@getTotalEntry')->name('expenses.totalentry');
 Route::get('/expenses/totalexpense','ExpenseController@getTotalExpense')->name('expenses.totalexpense');
 
-
-
+Route::put('/expenses/{id}/update','ExpenseController@update')->name('expenses.update');
+Route::delete('/expenses/{id}','ExpenseController@destroy')->name('expenses.destroy');
 Route::get('/{any}',function (){
     return view('home');
 })->where('any','.*');

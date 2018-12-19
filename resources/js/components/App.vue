@@ -5,7 +5,7 @@
                 <div class="row border-bottom white-bg">
                     <nav class="navbar navbar-expand-lg navbar-static-top" role="navigation">
 
-                        <a href="#" class="navbar-brand">Inspinia</a>
+                        <a href="#" class="navbar-brand">Budget</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-bars"></i>
@@ -29,7 +29,7 @@
                             <ul class="nav navbar-top-links navbar-right">
                                 <li>
                                     <a href="login.html">
-                                        <i class="fa fa-sign-out"></i> Log out
+                                        <i class="fas fa-sign-out"></i> Salir
                                     </a>
                                 </li>
                             </ul>

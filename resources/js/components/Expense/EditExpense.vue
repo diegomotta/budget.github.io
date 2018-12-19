@@ -6,20 +6,20 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 style="text-align: center;">Registrar gasto</h3>
+                            <h3 style="text-align: center;">Editar gasto</h3>
                         </div>
                         <div class="col-md-12">
 
                             <div class="form-group">
                                 <label>Cantidad gastada</label>
-                                <input type="number" placeholder="" :maxlength="10" class="form-control" v-model="expense">
+                                <input type="number" placeholder="" :maxlength="10" class="form-control" v-model="expense.value">
 
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Cantidad gastada</label>
-                                <select class="form-control m-b" v-model="typeExpense">
+                                <select class="form-control m-b" v-model="expense.type_expense.id">
                                     <option value="" >-- Seleccione la categoria --</option>
                                     <option v-for="option in typeExpenses" v-bind:value="option.id">{{option.type}}
                                     </option>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-12" style="    text-align: center;">
                             <button class="btn  btn-warning" @click="close"><i class="fas fa-ban"></i> Cancelar</button>
-                            <button type="button" @click="createExpense" class="btn btn-success pull-right"><i
+                            <button type="button" @click="updateExpense" class="btn btn-success pull-right"><i
                                     class="fas fa-save "></i> Registrar
                             </button>
                         </div>
@@ -49,9 +49,8 @@
         data() {
             // declare message with an empty value
             return {
-                expense: 0,
+                expense: this.$store.getters.getExpenseById(this.$route.params.id),
                 typeExpenses: [],
-                typeExpense: ""
             }
         },
 
@@ -63,14 +62,14 @@
                         this.typeExpenses = res.data;
                     });
             },
-            createExpense: function () {
+            updateExpense: function () {
                 let expense = {
-                    "expense": this.expense,
-                    "type": this.typeExpense,
+                    "id" : this.expense.id,
+                    "expense": this.expense.value,
+                    "type": this.expense.type_expense.id,
                     "amount": 2,
-
                 };
-                this.$store.dispatch('createExpense', expense);
+                this.$store.dispatch('updateExpense', expense);
                 this.$router.push({name: "main"});
                 this.$parent.$emit('close');
             },

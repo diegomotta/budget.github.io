@@ -6,6 +6,8 @@ import CreateEntry from '../components/Expense/CreateEntry.vue'
 import CreateExpense from '../components/Expense/CreateExpense.vue'
 import TypeExpense from '../components/TypeExpense/TypeExpense.vue'
 import TypeEntry from '../components/TypeEntry/TypeEntry.vue'
+import EditEntry from '../components/Expense/EditEntry.vue'
+import EditExpense from '../components/Expense/EditExpense.vue'
 
 Vue.use(Router)
 
@@ -18,6 +20,17 @@ var router = new Router({
             children: [
                 {path: '/entry', component: CreateEntry, name: "ingreso"},
                 {path: '/expense', component: CreateExpense, name: "egreso"}
+                ,
+                {
+                    path: "/entry/:id/edit",
+                    name: "editar.ingreso",
+                    component:  EditEntry,
+                },
+                {
+                    path: "/expense/:id/edit",
+                    name: "editar.egreso",
+                    component:  EditExpense,
+                }
             ],
         },
         {

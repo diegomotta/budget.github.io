@@ -7,14 +7,14 @@ let expensesStore = new Vuex.Store({
         state: {
             expenses: [],
             typeexpenses: [],
-            typeentries:[],
+            typeentries: [],
             totalEntry: 0,
             totalExpense: 0,
         },
-        getters:{
+        getters: {
             getTotalExpense(state){
                 return function () {
-                   return state.totalEntry;
+                    return state.totalEntry;
                 }
             },
             getTotalEntry(state){
@@ -27,11 +27,20 @@ let expensesStore = new Vuex.Store({
                     return state.typeexpenses;
                 }
             },
+            //devuelve por id de gasto/ingreso
+            getExpenseById: (state, getters) => (id) => {
+                return state.expenses.find(expense => expense.id === id)
+            },
+            //filtrar por tipo de gasto/ingreso
+            getExpenseFilter: (state, getters) => (name) => {
+                return state.expenses.filter(value => value.type_expense.type.toUpperCase().match(name.toUpperCase()))
+            },
+            //obtiene todo los tipos de ingresos
             getTypeEntries(state){
                 return function () {
                     return state.typeentries;
                 }
-            }
+            },
         },
         mutations: {
             FETCH(state, expenses) {
@@ -62,16 +71,23 @@ let expensesStore = new Vuex.Store({
                     .catch();
             },
 
-            deleteExpense({}, id) {
-                let url = '/expenses/' + id;
+            deleteExpense({}, expense) {
+                let url = '/expenses/' + expense.id;
                 axios.delete(url)
-                    .then(() => this.dispatch('fetch'))
-                    .catch();
+                    .then(() => {
+                        this.dispatch('fetch');
+                        this.dispatch('getTotalEntry');
+                        this.dispatch('getTotalExpense');
+                    });
             },
             updateExpense({}, expense) {
                 let url = '/expenses/' + expense.id + '/update';
                 axios.put(url, expense)
-                    .then(() => this.dispatch('fetch'));
+                    .then(() => {
+                        this.dispatch('fetch');
+                        this.dispatch('getTotalEntry');
+                        this.dispatch('getTotalExpense');
+                    });
             },
             createExpense({}, expense) {
 
@@ -81,10 +97,10 @@ let expensesStore = new Vuex.Store({
                         this.dispatch('fetch');
                         this.dispatch('getTotalEntry');
                         this.dispatch('getTotalExpense');
-
                     });
 
             },
+
 
             //Methods to manager type of expenses
 
@@ -108,7 +124,7 @@ let expensesStore = new Vuex.Store({
             },
             updateTypeExpense({}, typexpense) {
 
-                let url = '/typeExpenses/'+ typexpense.id+'/update';
+                let url = '/typeExpenses/' + typexpense.id + '/update';
                 axios.put(url, typexpense)
                     .then(() => {
                         this.dispatch('fetchTypeExpense');
@@ -146,7 +162,7 @@ let expensesStore = new Vuex.Store({
 
             updateTypeEntry({}, typeentry) {
 
-                let url = '/typeEntries/'+ typeentry.id+'/update';
+                let url = '/typeEntries/' + typeentry.id + '/update';
                 axios.put(url, typeentry)
                     .then(() => {
                         this.dispatch('fetchTypeEntries');

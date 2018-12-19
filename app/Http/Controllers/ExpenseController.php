@@ -18,9 +18,26 @@ class ExpenseController extends Controller
     }
 
 
+    public function update(Request $request, $id){
+        $expense = Expense::with('typeExpense','typeAmount')->where('id',$id)->first();
+        $expense->value = $request->get('expense');
+        $expense->type_expense_id =   $request->get('type');
+        $expense->type_amount_id = $request->get('amount');
+        $expense->save();
+
+        return 'ok';
+    }
+
+    public function destroy($id){
+        $expense = Expense::with('typeExpense','typeAmount')->where('id',$id)->first();
+        $expense->delete();
+        return 'ok';
+    }
+
+
 
     public function index(){
-        $expenses = Expense::with('typeExpense')->get();
+        $expenses = Expense::with('typeExpense','typeAmount')->get();
         return $expenses->toJson();
     }
 
